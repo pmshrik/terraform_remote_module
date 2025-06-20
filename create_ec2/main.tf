@@ -33,8 +33,8 @@ data "aws_vpc" "default" {
   default = true
 }
 
-resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh"
+resource "aws_security_group" "allow_ssh_v2" {
+  name        = "allow_ssh_v2"
   description = "Allow SSH"
   vpc_id      = data.aws_vpc.default.id
 
