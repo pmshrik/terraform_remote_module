@@ -8,7 +8,7 @@ variable "ec2_public_ip" {
     default = ""
 }
 
-variable "ec2_pem" {
+variable "ec2_pem_path" {
     type = string
     default = ""
 }
