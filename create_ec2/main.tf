@@ -57,7 +57,7 @@ resource "aws_instance" "create_ec2" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = var.aws_instance
   key_name                    = aws_key_pair.deployer.key_name
-  vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
+  vpc_security_group_ids      = [aws_security_group.allow_ssh_v2.id]
   associate_public_ip_address = true   # ✅ This makes it reachable via SSH
 
   tags = {
