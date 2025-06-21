@@ -21,7 +21,15 @@ resource "null_resource" "remote-exec" {
       # ✅ Then use that $CODENAME directly in echo
       "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $CODENAME stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null",
 
-      "sudo apt-get update -y"
+      "sudo apt-get update -y",
+      "sudo apt-get update -y",
+
+    # Optional but helpful
+    "sudo apt-get install -y command-not-found | tee -a /tmp/provision.log",
+    "sudo apt-get install -y python3 | tee -a /tmp/provision.log",
+
+    # Run the cnf update manually (this is what fails silently in post-invoke)
+    "sudo /usr/lib/cnf-update-db | tee -a /tmp/provision.log"
     ]
   }
 }
